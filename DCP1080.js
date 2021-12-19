@@ -20,14 +20,13 @@ MarkovChain.prototype.makeTransition = function(){
         sProp+=propability;
         if(r<sProp){
             this.node = targetNode;
-            return;
+            break;
         }
     }
     if(this.trackStates) this.states[this.node]++;
 }
 function createMarkovChain(data){
     let mc = new MarkovChain('a');
-    mc.trackStates = true;
     for(let transition of data){
         mc.addTransitionPropability(...transition);
     }
